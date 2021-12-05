@@ -14,6 +14,7 @@ namespace WebApi_Serilog.Controllers;
 public class WeatherForecastController : ControllerBase
 {
     private static List<AddModel> _models = new List<AddModel>();
+
     private static readonly string[] Summaries = new[]
     {
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
@@ -43,16 +44,31 @@ public class WeatherForecastController : ControllerBase
     }
 
     [HttpPost(Name = "PostAddition")]
-    [ApiLogger]
-    public void Add(AddModel model)
+    public Guid Add(AddModel model)
     {
         _models.Add(model);
+        return model.Id;
+
     }
 
     [HttpGet("GetAddition", Name = "GetAddition")]
-    [ApiLogger]
     public IEnumerable<AddModel> GetAddition()
     {
         return _models;
+    }
+
+    [HttpPatch("PatchAddition/{id}", Name = "PatchAddition")]
+    public IActionResult Update(Guid id, string lastName)
+    {
+        var data = _models.FirstOrDefault(m => m.Id == id);
+        data.LastName = lastName;
+        return Ok(new {data.Id});
+    }
+
+    [HttpDelete("DeleteAddition/{id}", Name = "DeleteAddition")]
+    public IActionResult Delete(Guid id)
+    {
+        _models.Remove(_models.FirstOrDefault(m => m.Id == id));
+        return Ok();
     }
 }

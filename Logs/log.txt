@@ -1,0 +1,73 @@
+2021-12-05 15:12:00.008 +08:00 [INF] [0HMDNNPU4IB1R:0000000D]POST /WeatherForecast RequestBody: {
+  "firstName": "Jay",
+  "lastName": "Wang"
+}
+2021-12-05 15:12:00.124 +08:00 [INF] [0HMDNNPU4IB1R:0000000D]StatusCode: 200 Response Result: "795fec7b-3e19-40b7-bd9e-10b3c1591816"
+2021-12-05 15:12:00.126 +08:00 [INF] [0HMDNNPU4IB1R:0000000D]--- REQUEST 0HMDNNPU4IB1R:0000000D: END ---
+2021-12-05 15:12:31.847 +08:00 [INF] [0HMDNNPU4IB1R:0000000F]GET /WeatherForecast/GetAddition RequestBody: 
+2021-12-05 15:12:31.865 +08:00 [INF] [0HMDNNPU4IB1R:0000000F]StatusCode: 200 Response Result: [{"id":"795fec7b-3e19-40b7-bd9e-10b3c1591816","firstName":"Jay","lastName":"Wang"}]
+2021-12-05 15:12:31.870 +08:00 [INF] [0HMDNNPU4IB1R:0000000F]--- REQUEST 0HMDNNPU4IB1R:0000000F: END ---
+2021-12-05 15:13:06.867 +08:00 [INF] [0HMDNNPU4IB1R:00000011]PATCH /WeatherForecast/PatchAddition/3fa85f64-5717-4562-b3fc-2c963f66afa6?lastName=Chen RequestBody: 
+2021-12-05 15:13:27.769 +08:00 [ERR] An unhandled exception has occurred while executing the request.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at WebApi_Serilog.Controllers.WeatherForecastController.Update(Guid id, String lastName) in C:\Users\WangJay\RiderProjects\WebApi_Serilog\Controllers\WeatherForecastController.cs:line 64
+   at lambda_method6(Closure , Object , Object[] )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at WebApi_Serilog.ApiLoggerMiddleware.LogResponse(HttpContext httpContext) in C:\Users\WangJay\RiderProjects\WebApi_Serilog\ApiLoggerMiddleware.cs:line 39
+   at WebApi_Serilog.ApiLoggerMiddleware.LogResponse(HttpContext httpContext) in C:\Users\WangJay\RiderProjects\WebApi_Serilog\ApiLoggerMiddleware.cs:line 47
+   at WebApi_Serilog.ApiLoggerMiddleware.Invoke(HttpContext httpContext) in C:\Users\WangJay\RiderProjects\WebApi_Serilog\ApiLoggerMiddleware.cs:line 29
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2021-12-05 15:13:27.916 +08:00 [ERR] An exception was thrown attempting to display the error page.
+System.ObjectDisposedException: Cannot access a closed Stream.
+   at System.IO.MemoryStream.Write(Byte[] buffer, Int32 offset, Int32 count)
+   at System.IO.MemoryStream.WriteAsync(ReadOnlyMemory`1 buffer, CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at System.IO.Pipelines.StreamPipeWriter.FlushAsyncInternal(Boolean writeToStream, ReadOnlyMemory`1 data, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2021-12-05 15:13:28.036 +08:00 [ERR] Connection id "0HMDNNPU4IB1R", Request id "0HMDNNPU4IB1R:00000011": An unhandled exception was thrown by the application.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at WebApi_Serilog.Controllers.WeatherForecastController.Update(Guid id, String lastName) in C:\Users\WangJay\RiderProjects\WebApi_Serilog\Controllers\WeatherForecastController.cs:line 64
+   at lambda_method6(Closure , Object , Object[] )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at WebApi_Serilog.ApiLoggerMiddleware.LogResponse(HttpContext httpContext) in C:\Users\WangJay\RiderProjects\WebApi_Serilog\ApiLoggerMiddleware.cs:line 39
+   at WebApi_Serilog.ApiLoggerMiddleware.LogResponse(HttpContext httpContext) in C:\Users\WangJay\RiderProjects\WebApi_Serilog\ApiLoggerMiddleware.cs:line 47
+   at WebApi_Serilog.ApiLoggerMiddleware.Invoke(HttpContext httpContext) in C:\Users\WangJay\RiderProjects\WebApi_Serilog\ApiLoggerMiddleware.cs:line 29
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+2021-12-05 15:13:49.468 +08:00 [INF] [0HMDNNPU4IB1R:00000013]PATCH /WeatherForecast/PatchAddition/795fec7b-3e19-40b7-bd9e-10b3c1591816?lastName=Chen RequestBody: 
+2021-12-05 15:13:49.481 +08:00 [INF] [0HMDNNPU4IB1R:00000013]StatusCode: 200 Response Result: {"id":"795fec7b-3e19-40b7-bd9e-10b3c1591816"}
+2021-12-05 15:13:49.484 +08:00 [INF] [0HMDNNPU4IB1R:00000013]--- REQUEST 0HMDNNPU4IB1R:00000013: END ---
+2021-12-05 15:14:51.957 +08:00 [INF] [0HMDNNPU4IB1R:00000015]DELETE /WeatherForecast/DeleteAddition/795fec7b-3e19-40b7-bd9e-10b3c1591816 RequestBody: 
+2021-12-05 15:14:51.967 +08:00 [INF] [0HMDNNPU4IB1R:00000015]StatusCode: 200 Response Result: 
+2021-12-05 15:14:51.970 +08:00 [INF] [0HMDNNPU4IB1R:00000015]--- REQUEST 0HMDNNPU4IB1R:00000015: END ---
