@@ -21,8 +21,7 @@ var configuration = new ConfigurationBuilder()
         true)
     .Build();
 builder.Host.UseSerilog((context, loggerConfiguration) =>
-    loggerConfiguration.ReadFrom.Configuration(configuration)
-        .WriteTo.Console());
+    loggerConfiguration.ReadFrom.Configuration(configuration));
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
