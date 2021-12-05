@@ -47,19 +47,19 @@ namespace WebApi_Serilog
 
                 _logger.Information(stringBuilder.ToString());
             }
-            var originalStream = httpContext.Request.Body;
-            var memoryStream = _recyclableMemoryStreamManager.GetStream();
+            var originalStream = httpContext.Response.Body;
+            var memoryStream = new MemoryStream();
             httpContext.Response.Body = memoryStream;
             
             await _next(httpContext);
             
-            httpContext.Response.Body.Seek(0, SeekOrigin.Begin);
-            var responseReader = new StreamReader(httpContext.Response.Body);
-            var responseResult = await responseReader.ReadToEndAsync();
-            httpContext.Response.Body.Seek(0, SeekOrigin.Begin);
+            memoryStream.Seek(0, SeekOrigin.Begin);
+            var responseResult = await new StreamReader(memoryStream).ReadToEndAsync();
+            memoryStream.Seek(0, SeekOrigin.Begin);
+            await memoryStream.CopyToAsync(originalStream);
+            httpContext.Response.Body = originalStream;
             _logger.Information($"Response Result: {responseResult}");
             
-            await memoryStream.CopyToAsync(originalStream);
         }
     }
 }
