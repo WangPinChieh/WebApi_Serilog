@@ -1,11 +1,6 @@
 ﻿using System.IO;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Features;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
-using Microsoft.IO;
-using Serilog;
 
 namespace WebApi_Serilog
 {
@@ -13,13 +8,11 @@ namespace WebApi_Serilog
     {
         private readonly RequestDelegate _next;
         private readonly Serilog.ILogger _logger;
-        private RecyclableMemoryStreamManager? _recyclableMemoryStreamManager;
 
         public ApiLoggerMiddleware(RequestDelegate next, Serilog.ILogger logger)
         {
             _next = next;
             _logger = logger;
-            _recyclableMemoryStreamManager = new RecyclableMemoryStreamManager();
         }
 
         public async Task Invoke(HttpContext httpContext)
