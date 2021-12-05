@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Builder;using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
+using WebApi_Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,7 +24,6 @@ builder.Host.UseSerilog((context, loggerConfiguration) =>
     loggerConfiguration.ReadFrom.Configuration(configuration)
         .WriteTo.Console());
 var app = builder.Build();
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -31,6 +31,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseMiddleware<ApiLoggerMiddleware>();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
